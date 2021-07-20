@@ -1,3 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --color-1: #03045E;
+    --color-2: #0077B6;
+    --color-3: #00B4D8;
+    --color-4: #90E0Ef;
+    --color-5: #CAF0F8;
+    --text-light: #fff;
+    --text-dark: rgb(20, 20, 20);
+  }
+
+.header {
+    background-color: #d7d7e8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20vh;
+    padding: 1.5rem;
+    z-index: 100;  
+    MARGIN-TOP: 29PX;
+}
+
+.navBar {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+}
+
+
+  .titleImage {
+    padding-left: 10px;
+    grid-column: 1 / span 2;
+  }
+
+  .logo {
+      height: 150px;
+  }
+
+  .menu {
+    margin-bottom: auto;
+    margin-top: auto;
+    justify-content: space-evenly;
+    display: flex;
+    grid-column: 3 / span 2;
+}
+  
