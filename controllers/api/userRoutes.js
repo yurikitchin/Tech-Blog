@@ -4,25 +4,32 @@ require("dotenv").config();
 
 //new user
 router.post("/users", async (req, res) => {
-    try {
-      const exisitingUsers = await User.findAll();
+  try {
+    const exisitingUsers = await User.findOne({
+      where: { userName: req.body.userName },
+    });
 
-      console.log(exisitingUsers)
-      
-      const userData = await User.create({
-        userName: req.body.userName,
-        password: req.body.password,
-      });
-      console.log("line 12 user data aaaaaaaaaaaaaaaaaaaaaa",userData.userName)
-      req.session.save(() => {
-        req.session.loggedIn = true;
-  
-        res.status(200).json(userData);
-      });
-    } catch (err) {
+    const userData = await User.create({
+      userName: req.body.userName,
+      password: req.body.password,
+    });
+    console.log("this is the existing users", exisitingUsers);
+    console.log("this is user data", userData);
+    if (exisitingUsers.userName === userData.userName) {
+      let err = "User name already exists, please try new user name";
       console.log(err);
       res.status(500).json(err);
-    }
-  });
+    } else {
+      req.session.save(() => {
+        req.session.loggedIn = true;
 
-  module.exports = router
+        res.status(200).json(userData);
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
