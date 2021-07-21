@@ -6,7 +6,9 @@ const router = require('express').Router()
 // ================= Homepage =======================
 router.get("/", (req, res) => {
     try {
-        res.render("homepage",)
+        res.render("homepage", {
+            loggedIn: req.session.loggedIn, 
+        });
     } catch (err) {
         console.error(err.message)
     }

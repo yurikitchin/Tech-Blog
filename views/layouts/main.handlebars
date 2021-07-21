@@ -18,14 +18,14 @@
             </div>
 
             <div class="menu">
-                {{#if logged_in}}
+                {{#if loggedIn}}
                 <a href="#" class="menuLinks">Home</a>
                 {{/if}}
-                {{#if logged_in}}
+                {{#if loggedIn}}
                 <a href="#" class="menuLinks">Dashboard</a>
                 {{/if}}
-                {{#if logged_in}}
-                <a href="#" class="menuLinks">Logout</a>
+                {{#if loggedIn}}
+                <a href="#" id="logout" class="menuLinks">Logout</a>
                 {{else}}
                 <a id="loginBtn" href="#" class="menuLinks">Login</a>
                 {{/if}}
@@ -39,5 +39,9 @@
     </main>
 
 </body>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{else}}
 <script src="/js/loggin.js"></script>
+{{/if}}
 </html>
