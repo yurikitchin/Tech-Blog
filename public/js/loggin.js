@@ -18,9 +18,6 @@ const signupHandler = async (event) => {
 confirmPassword()
 
 if (userName && password) {
-    console.log(userName)
-    console.log(password)
-    console.log(JSON.stringify({ userName, password }))
     const response = await fetch("/api/users", {
         method: "POST",
         body: JSON.stringify({ userName, password }),
