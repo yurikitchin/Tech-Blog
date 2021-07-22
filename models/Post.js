@@ -25,7 +25,7 @@ Post.init(
           },
           datePosted: {
               type: DataTypes.DATE,
-              allowNull: false,
+    
           },
           user_id: {
               type: DataTypes.INTEGER,
@@ -40,7 +40,7 @@ Post.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'post',
     },
 );
 

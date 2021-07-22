@@ -13,7 +13,7 @@ Comment.init(
           },
           user: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
           Comment: {
               type: DataTypes.TEXT,
@@ -44,7 +44,7 @@ Comment.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'comment',
         },
 );
 
