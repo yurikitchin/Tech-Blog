@@ -3,6 +3,16 @@
         "id": 1,
         "userName": "darthMaul", 
         "password": "s1thlyf3"
+    },
+    {
+        "id": 2,
+        "userName": "cheezyBoi", 
+        "password": "s1thlyf3"
+    },
+    {
+        "id": 3,
+        "userName": "passwordGen", 
+        "password": "s1thlyf3"
     }
 ]
    
