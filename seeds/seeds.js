@@ -13,10 +13,9 @@ const seedDatabase = async () => {
         individualHooks: true,
         returning: true
     })
-    await Post.bulkCreate(testPost, {
-    })
-    await Comment.bulkCreate(testComment, {
-    })
+    await Post.bulkCreate(testPost);
+    await Comment.bulkCreate(testComment)
+
     process.exit(0)
 }
 
