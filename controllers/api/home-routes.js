@@ -3,10 +3,10 @@ const router = require('express').Router()
 //const { modelName1, Modelname2, modelname 3 } = require("../models")
 
 
-// ================= Homepage =======================
+// ================= Login/signup =======================
 router.get("/", (req, res) => {
     try {
-        res.render("homepage", {
+        res.render("login", {
             loggedIn: req.session.loggedIn, 
         });
     } catch (err) {
