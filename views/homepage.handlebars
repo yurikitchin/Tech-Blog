@@ -1,10 +1,6 @@
 {{!-- add homepage boiler plate --}}
-<section>
-    <div>
-        <h1>{post.Title}</h1>
-        <p>created by {post.user} on {date}</p>
-    </div>
-    <article>
-        {post.content}
-    </article>
+<section class="postCard">
+    {{#each post as | data |}}
+    {{>post-data}}
+    {{/each}}
 </section>
