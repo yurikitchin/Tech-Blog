@@ -19,7 +19,7 @@ Post.init(
               type: DataTypes.TEXT,
               allowNull: false,
           },
-          user: {
+          author: {
               type: DataTypes.STRING,
               allowNull: false,
           },
