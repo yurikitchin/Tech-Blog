@@ -1,42 +1,10 @@
-    <section class="signModal">
-      <div class="modalContent">
-        <h1 class="modalTitle">Sign Up</h1>
-        <button id="closeSign" class="closeBtn">&times;</button>
-      </div>
-      <form class="form" action="#">
-
-        <label for="signup"></label>
-        <input type="text" id="signup" placeholder="Username" />
-
-        <label for="password-signup"></label>
-        <input type="password" id="password-signup" autocomplete="new-password" placeholder="Password" />
-
-        <label for="confirm-password-signup"></label>
-        <input type="password" id="confirm-password-signup" autocomplete="new-password" placeholder="Confirm Password" />
-
-        <input class="submitBtn" id="signUpBtn" type="submit" value="Submit" />
-      </form>
-    </section>
-
-    <section class="loginModal">
-      <div class="modalContent">
-        <h1 class="modalTitle">Sign In</h1>
-        <button id="closeLogin" class="closeBtn">&times;</button>
-      </div>
-
-      <form class="form">
-
-        <label for="username-login"></label>
-        <input type="text" id="userLogin" placeholder="Username" />
-
-        <label for="password-login"></label>
-        <input type="password" id="password-login" autocomplete="new-password" placeholder="Password" />
-
-        <input class="submitBtn" id="login-submit" type="submit" value="Submit" />
-      </form>
-
-      <div class="signUp">
-        <p>Not Registered?</p>
-        <button id="signBtn" >Sign Up</button>
-      </div>
-    </section>
+{{!-- add homepage boiler plate --}}
+<section>
+    <div>
+        <h1>{post.Title}</h1>
+        <p>created by {post.user} on {date}</p>
+    </div>
+    <article>
+        {post.content}
+    </article>
+</section>
