@@ -49,6 +49,10 @@
   
  .signModal, .loginModal {
    display: none;
+   position: absolute;
+   left: 50%;
+   margin-left: -185px;
+   top: 14%;
     opacity: 0;
     max-width: 90vw;
     max-height: 90vh;
@@ -152,3 +156,7 @@
     color: var(--text-light);
   }
   
+  .postCard {
+    position: relative;
+    margin-top: 150px;
+  }
