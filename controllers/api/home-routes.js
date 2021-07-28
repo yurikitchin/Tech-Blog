@@ -7,18 +7,18 @@ const router = require('express').Router()
 
 
 // ================= Login/signup =======================
-router.get("/", (req, res) => {
-    try {
-        res.render("login", {
-            loggedIn: req.session.loggedIn, 
-        });
-    } catch (err) {
-        console.error(err.message)
-    }
-})
+// router.get("/", (req, res) => {
+//     try {
+//         res.render("homepage", {
+//             loggedIn: req.session.loggedIn, 
+//         });
+//     } catch (err) {
+//         console.error(err.message)
+//     }
+// })
 
 //=================== Homepage ======================
-router.get("/home", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll()
         console.log("AAAAAAAAAAAAAA Post Data AAAAAAAAAAAAAAAAAAA",postData)
@@ -28,7 +28,8 @@ router.get("/home", async (req, res) => {
         console.log("BBBBBBBBBBBBBBBBb renderPosts BBBBBBBBBBBb", renderPosts)
         res.render("homepage", {
             renderPosts,
-            loggedIn: req.session.loggedIn, 
+            loggedIn: req.session.loggedIn,
+            username: req.session.username, 
         });
     } catch (err) {
         console.error(err.message)
