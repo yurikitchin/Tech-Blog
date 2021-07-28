@@ -1,0 +1,12 @@
+{{!-- Posts --}}
+<section class="postCard">
+    {{#each renderPosts as | data |}}
+    {{>post-data}}
+    {{/each}}
+</section>
+
+<section class="comments">
+    {{#each comment as | data |}}
+    {{>comment-data}}
+    {{/each}}
+</section>
