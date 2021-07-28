@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User } = require("../../models");
 require("dotenv").config();
 
-//new user
+//create new user
 router.post("/users", async (req, res) => {
   try {
     const exisitingUsers = await User.findOne({

@@ -51,7 +51,7 @@ const loginHandler = async (event) => {
             console.log('user logged in......................................')
             setTimeout(function(){ 
               console.log('setTimeoutAAAAAAAAAAAAAAA')
-              document.location.replace('/') }, 100);
+              document.location.replace('/home') }, 100);
             
           } else {
             alert('Failed to log in.');
