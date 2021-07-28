@@ -1,0 +1,1 @@
+const viewPost = document.querySelector('.postLink')

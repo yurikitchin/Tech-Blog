@@ -36,5 +36,17 @@ router.get("/", async (req, res) => {
     }
 })
 
+//======================== View Single post and Comments ========================//
+router.get('/post/:id', async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: Comment
+        });
+
+    } catch (err) {
+        console.error(err.message)
+    }
+})
+
 
 module.exports = router;
