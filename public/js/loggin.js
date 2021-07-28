@@ -51,7 +51,7 @@ const loginHandler = async (event) => {
             console.log('user logged in......................................')
             setTimeout(function(){ 
               console.log('setTimeoutAAAAAAAAAAAAAAA')
-              document.location.replace('/home') }, 100);
+              document.location.replace('/') }, 100);
             
           } else {
             alert('Failed to log in.');
@@ -93,3 +93,4 @@ function hideSignUp() {
 function hideLogin() {
     loginModal.classList.remove("display")
 }
+
