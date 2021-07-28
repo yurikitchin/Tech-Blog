@@ -1,5 +1,6 @@
 const { User } = require('../../models');
 const Post = require('../../models/Post');
+const Comment = require('../../models/Comment')
 
 const router = require('express').Router()
 //require models when they have been created
@@ -42,6 +43,7 @@ router.get('/post/:id', async (req, res) => {
         const postData = await Post.findByPk(req.params.id, {
             include: Comment
         });
+        res.status(200).json(postData)
 
     } catch (err) {
         console.error(err.message)
