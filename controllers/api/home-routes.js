@@ -26,7 +26,6 @@ router.get("/", async (req, res) => {
         const renderPosts = postData.map((posts) => 
         posts.get({ plain: true}))
 
-        console.log("BBBBBBBBBBBBBBBBb renderPosts BBBBBBBBBBBb", renderPosts)
         res.render("homepage", {
             renderPosts,
             loggedIn: req.session.loggedIn,
@@ -43,7 +42,16 @@ router.get('/post/:id', async (req, res) => {
         const postData = await Post.findByPk(req.params.id, {
             include: Comment
         });
-        res.status(200).json(postData)
+        const viewPost = postData.get({ plain: true})
+        console.log(viewPost.comments[0].author)
+        // res.status(200).json(viewPost)
+        res.render('post', {
+            viewPost,
+            comments: viewPost.comments,
+            loggedIn: req.session.loggedIn,
+            username: req.session.username, 
+        })
+
 
     } catch (err) {
         console.error(err.message)

@@ -25,7 +25,7 @@ if (userName && password) {
     })
     
     if (response.ok) {
-        // document.location.replace("/")
+        document.location.replace("/")
         console.log(userName)
     } else {
         alert("Failed to sign up")
