@@ -156,7 +156,15 @@
     color: var(--text-light);
   }
   
+
+  /* ==================== Post Cards ====================== */
   .postCard {
     position: relative;
-    margin-top: 150px;
+    margin-top: 230px;
+  }
+
+  .commentBtn {
+    width: 100%;
+    background-color: #03045E;
+    color: #d7d7e8;
   }
