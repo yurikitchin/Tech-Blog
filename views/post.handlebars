@@ -1,12 +1,23 @@
 {{!-- Posts --}}
 <section class="postCard">
-    {{#each renderPosts as | data |}}
-    {{>post-data}}
-    {{/each}}
+      <div>
+        <h1 class="postTitle" id={{id}}>{{viewPost.title}}</h1>
+        <p>created by {{viewPost.author}} on {{viewPost.datePosted}}</p>
+    </div>
+    <article>
+        {{viewPost.blog}}
+    </article>
+    <button class="commentBtn" id={{id}}> Go on! Add a comment....</button>
 </section>
 
 <section class="comments">
-    {{#each comment as | comment |}}
-    {{>comment-data}}
+    {{#each comments as |comments|}}
+      <div>
+        <h2>{{comments.author}} {{comments.datePosted}}</h2>
+        <p>{{comments.Comment}}</p>
     {{/each}}
+    </div>
+    {{!-- {{else}}
+    <p>Be the first to comment on this Post</p>
+    {{/if}} --}}
 </section>
