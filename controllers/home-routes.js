@@ -64,10 +64,6 @@ router.get('/post/:id', async (req, res) => {
 })
 
 router.post('/comment', async (req, res) => {
-    console.log(req)
-})
-
-router.post('/comment', async (req, res) => {
     console.log(req.body)
     try {
         const newComment = await Comment.create({

@@ -46,7 +46,7 @@ const addComment = async (event ) => {
     // } else {
     //   alert("failed to add comment");
     // }
-  // }
+  }
 };
 
 commentAdd.addEventListener('click', addComment)
