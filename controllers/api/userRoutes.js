@@ -21,7 +21,7 @@ router.post("/users", async (req, res) => {
 });
 
 //login
-router.post("/users/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const UserData = await User.findOne({
       where: { userName: req.body.userName },
@@ -68,4 +68,17 @@ router.post("/logout", (req, res) => {
   }
 });
 
-//Add a comment
+//add new comment
+//add a comment
+router.post('/post/:id', async (req, res) => {
+  try {
+      const newComment = await Comment.create({
+          ...req.body,
+          user_id: req.session.id
+      });
+      res.status(200).json(newComment)
+
+  } catch (err) {
+      console.error(err.message)
+  }
+})
