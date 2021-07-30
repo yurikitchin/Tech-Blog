@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const { format_date } = require("../../utils/helpers");
 require("dotenv").config();
 
 //create new user
@@ -70,15 +71,3 @@ router.post("/logout", (req, res) => {
 
 //add new comment
 //add a comment
-router.post('/post/:id', async (req, res) => {
-  try {
-      const newComment = await Comment.create({
-          ...req.body,
-          user_id: req.session.id
-      });
-      res.status(200).json(newComment)
-
-  } catch (err) {
-      console.error(err.message)
-  }
-})

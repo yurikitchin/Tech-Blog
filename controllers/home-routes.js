@@ -1,6 +1,6 @@
-const { User } = require('../../models');
-const Post = require('../../models/Post');
-const Comment = require('../../models/Comment')
+const { User } = require('../models');
+const Post = require('../models/Post');
+const Comment = require('../models/Comment')
 
 const router = require('express').Router()
 
@@ -63,4 +63,26 @@ router.get('/post/:id', async (req, res) => {
     }
 })
 
+router.post('/comment', async (req, res) => {
+    console.log(req)
+})
+
+router.post('/comment', async (req, res) => {
+    console.log(req.body)
+    try {
+        const newComment = await Comment.create({
+            comment: req.body.comment,
+            datePosted: format_date,
+            post_id: req.body.post_id,
+            user_id: req.session.id,
+            
+        });
+        console.log(newComment)
+        res.status(200).json(newComment)
+  
+    } catch (err) {
+        console.error(err.message)
+    }
+  })
+  
 module.exports = router;
