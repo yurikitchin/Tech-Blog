@@ -47,7 +47,7 @@
 
  /* ================= Sign in/up Modals =================== */
   
- .signModal, .loginModal {
+ .signModal, .loginModal, .commentModal {
    display: none;
    position: absolute;
    left: 50%;

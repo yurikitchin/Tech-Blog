@@ -7,7 +7,9 @@
     <article>
         {{viewPost.blog}}
     </article>
+    {{#if loggedIn}}
     <button class="commentBtn" id={{id}}> Go on! Add a comment....</button>
+    {{/if}}
 </section>
 
 <section class="comments">
@@ -21,3 +23,27 @@
     <p>Be the first to comment on this Post</p>
     {{/if}} --}}
 </section>
+
+   <section class="commentModal">
+      <div class="modalContent">
+        <h1 class="modalTitle">Add a Comment</h1>
+        <button id="closeComment" class="closeBtn">&times;</button>
+      </div>
+
+      <form class="form">
+
+        <label for="commentContent"></label>
+        <input type="textarea" id="commentContent" placeholder="Add your comment" />
+
+
+
+        <input class="submitBtn" id="comment-submit" type="submit" value="Submit" />
+      </form>
+
+    </section>
+
+    
+    <script src="/js/post.js"></script>
+   
+
+    
