@@ -3,20 +3,6 @@ const Post = require('../../models/Post');
 const Comment = require('../../models/Comment')
 
 const router = require('express').Router()
-//require models when they have been created
-//const { modelName1, Modelname2, modelname 3 } = require("../models")
-
-
-// ================= Login/signup =======================
-// router.get("/", (req, res) => {
-//     try {
-//         res.render("homepage", {
-//             loggedIn: req.session.loggedIn, 
-//         });
-//     } catch (err) {
-//         console.error(err.message)
-//     }
-// })
 
 //=================== Homepage ======================
 router.get("/", async (req, res) => {
