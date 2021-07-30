@@ -65,16 +65,16 @@ router.get('/post/:id', async (req, res) => {
 })
 
 router.post('/comment', async (req, res) => {
-    console.log(req.body)
+    console.log("REquest body",req.body)
     try {
         const newComment = await Comment.create({
-            comment: req.body.comment,
-            datePosted: format_date,
+            comment: req.body.Comment,
             post_id: req.body.post_id,
             user_id: req.session.id,
+            datePosted: format_date
             
         });
-        console.log(newComment)
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",newComment)
         res.status(200).json(newComment)
   
     } catch (err) {

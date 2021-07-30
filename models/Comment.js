@@ -16,7 +16,7 @@ Comment.init(
         //     allowNull: true,
         // },
           Comment: {
-              type: DataTypes.TEXT,
+              type: DataTypes.STRING,
               allowNull: false,
           },
           datePosted: {

@@ -20,12 +20,8 @@ const commentAdd = document.querySelector("#comment-submit");
 const addComment = async (event ) => {
     event.preventDefault()
 
-    debugger
   let post_id = document.querySelector(".postTitle").getAttribute('id');
   let Comment = document.querySelector("#commentContent").value.trim();
-
-  console.log(post_id)
-  console.log(Comment)
   if (post_id && Comment) {
     try {
     const response = await fetch("/comment", {
@@ -33,16 +29,15 @@ const addComment = async (event ) => {
       body: JSON.stringify({ post_id, Comment }),
       headers: {'Content-Type': 'application/json'},
     });
-  } catch(err) {
-    console.log(err)
-  } 
     if (response.ok) {
       //document.location.replace(`/post/${post_id}`);
       console.log('response ok')
     } else {
       alert("failed to add comment");
     }
-  }
+  }catch(err) {
+    console.log(err)
+  }} 
 };
 
 commentAdd.addEventListener('click', addComment)
