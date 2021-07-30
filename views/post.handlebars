@@ -2,7 +2,7 @@
 <section class="postCard">
       <div>
         <h1 class="postTitle" id={{id}}>{{viewPost.title}}</h1>
-        <p>created by {{viewPost.author}} on {{viewPost.datePosted}}</p>
+        <p>created by {{viewPost.user.userName}} on {{viewPost.datePosted}}</p>
     </div>
     <article>
         {{viewPost.blog}}
@@ -15,7 +15,7 @@
 <section class="comments">
     {{#each comments as |comments|}}
       <div>
-        <h2>{{comments.author}} {{comments.datePosted}}</h2>
+        <h2>{{comments.user.userName}} {{comments.datePosted}}</h2>
         <p>{{comments.Comment}}</p>
     {{/each}}
     </div>
@@ -43,7 +43,7 @@
     </section>
 
     
-    <script src="/js/post.js"></script>
+<script src="../js/postPage.js"></script>
    
 
     

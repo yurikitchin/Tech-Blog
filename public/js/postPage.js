@@ -15,3 +15,9 @@ addCommentBt.addEventListener('click', showModal)
 closeComment.addEventListener('click', hideModal)
 
 //==================== add comment ===========================//
+const commentAdd = document.querySelector('#comment-submit')
+const commentContent = document.querySelector('#commentContent')
+
+function addComment() {
+    let postID = document.querySelector('.postTitle').getAttribute('id')
+}
