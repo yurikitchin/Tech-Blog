@@ -64,18 +64,21 @@ router.get('/post/:id', async (req, res) => {
     }
 })
 
+//============================= Add Comment to Post ===========================//
 router.post('/comment', async (req, res) => {
-    console.log("REquest body",req.body)
     try {
         const newComment = await Comment.create({
-            comment: req.body.Comment,
+            Comment: req.body.Comment,
             post_id: req.body.post_id,
-            user_id: req.session.id,
-            datePosted: format_date
+            user_id: req.session.userId,
+            loggedIn: req.session.loggedIn
             
         });
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",newComment)
-        res.status(200).json(newComment)
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",req.session.userId)
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            res.status(200).json(newComment)
+        })
   
     } catch (err) {
         console.error(err.message)
