@@ -33,19 +33,15 @@ const addComment = async (event ) => {
       body: JSON.stringify({ post_id, Comment }),
       headers: {'Content-Type': 'application/json'},
     });
-    if (response.status !== 200){
-      console.log(response.status)
-      console.log(fetch("/post/comment"))
-    }
   } catch(err) {
     console.log(err)
   } 
-    // if (response.ok) {
-    //   //document.location.replace(`/post/${post_id}`);
-    //   console.log('response ok')
-    // } else {
-    //   alert("failed to add comment");
-    // }
+    if (response.ok) {
+      //document.location.replace(`/post/${post_id}`);
+      console.log('response ok')
+    } else {
+      alert("failed to add comment");
+    }
   }
 };
 

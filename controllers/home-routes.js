@@ -1,6 +1,7 @@
 const { User } = require('../models');
 const Post = require('../models/Post');
-const Comment = require('../models/Comment')
+const Comment = require('../models/Comment');
+const { format_date } = require('../utils/helpers');
 
 const router = require('express').Router()
 
