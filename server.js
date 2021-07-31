@@ -14,7 +14,7 @@ const helpers = require('./utils/helpers');
 
 //Set up the express app
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT
 
 //set up sessions
 const sess = {

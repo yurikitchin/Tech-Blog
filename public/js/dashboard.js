@@ -32,6 +32,7 @@ const addPost = async (event) => {
             });
             if (response.ok) {
                 console.log('response ok')
+                document.location.replace(`/dashboard`);
             }
             else {
                 alert("failed to add Post")
