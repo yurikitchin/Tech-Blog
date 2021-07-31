@@ -10,9 +10,10 @@
     <article>
         {{post.blog}}
     </article>
-    {{#if loggedIn}}
-    <button class="postBtn" id={{id}}> Go on! Add a post....</button>
-    {{/if}}
+      <nav class="postButtons">
+          <button class="updateBtn" id={{post.id}}> Update Post </button>
+          <button class="deleteBtn" id={{post.id}}> Delete Post </button>
+      </nav>
     </div>
 </section>
 {{/each}}
