@@ -14,11 +14,11 @@ const helpers = require('./utils/helpers');
 
 //Set up the express app
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 
 //set up sessions
 const sess = {
-    secret: 'Super secret secret',
+    secret: process.env.SECRET,
     cookie: {
       maxAge: 300000,
     },
