@@ -47,7 +47,7 @@
 
  /* ================= Sign in/up Modals =================== */
   
- .signModal, .loginModal, .commentModal {
+ .signModal, .loginModal, .commentModal, .newPostModal {
    display: none;
    position: absolute;
    left: 50%;
@@ -140,7 +140,7 @@
     color: var(--text-light);
   }
   
-  #signBtn, .deleteEmployeeBtn, .deleteSiteBtn {
+  #signBtn {
     background-color: var(--color-5);
     width: 30%;
     padding: 0.5rem;
@@ -151,7 +151,7 @@
     transition: all 0.5s ease;
 
   }
-  #signBtn:hover, .deleteEmployeeBtn:hover, .deleteSiteBtn:hover {
+  #signBtn:hover {
     background-color: var(--color-1);
     color: var(--text-light);
   }

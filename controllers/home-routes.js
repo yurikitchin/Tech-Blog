@@ -55,6 +55,7 @@ router.get("/dashboard", async (req, res) => {
         userPosts,
         loggedIn: req.session.loggedIn,
         username: req.session.username,
+        userId: req.session.userId,
       })
     });
   } catch (err) {

@@ -1,0 +1,39 @@
+
+
+<section class="postCard">
+    {{#each userPosts as | post |}}
+    <div class=".postwrapper">
+      <div>
+        <h1 class="postTitle" id={{post.id}}>{{post.title}}</h1>
+        <p>created by {{post.user.userName}} on {{format_date post.datePosted}}</p>
+    </div>
+    <article>
+        {{post.blog}}
+    </article>
+    {{#if loggedIn}}
+    <button class="commentBtn" id={{id}}> Go on! Add a comment....</button>
+    {{/if}}
+    </div>
+</section>
+{{/each}}
+
+   <section class="newPostModal">
+      <div class="modalContent">
+        <h1 class="modalTitle">Add a Comment</h1>
+        <button id="closePost" class="closeBtn">&times;</button>
+      </div>
+
+      <form class="form">
+
+        <label for="commentContent"></label>
+        <input type="textarea" id="commentContent" placeholder="Add your comment" />
+
+
+
+        <input class="submitBtn" id="comment-submit" type="submit" value="Submit" />
+      </form>
+
+    </section>
+
+  <button class=".postBtn" type="submit">Add New post</button>  
+<script src="../js/homepage.js"></script>
