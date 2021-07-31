@@ -35,38 +35,66 @@ router.get("/", async (req, res) => {
 //view all posts by logged in user, add post, delete post
 router.get("/dashboard", async (req, res) => {
   try {
-    console.log("line 38 sessio user id llllllllllllllllllllllllllllllllll", req.session.userId)
+    console.log(
+      "line 38 sessio user id llllllllllllllllllllllllllllllllll",
+      req.session.userId
+    );
     const dbPosts = await Post.findAll({
       where: { user_id: req.session.userId },
       include: [
         {
           model: User,
-          attributes: ['userName'],
+          attributes: ["userName"],
         },
       ],
     });
-    console.log("line 48 kkkkkkkkkkkkkkkkkkkkkkkk", dbPosts)
-    const userPosts = dbPosts.map((posts) => posts.get({ plain: true }))
-    console.log("line 48 hone-routes.js mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm", userPosts);
+    console.log("line 48 kkkkkkkkkkkkkkkkkkkkkkkk", dbPosts);
+    const userPosts = dbPosts.map((posts) => posts.get({ plain: true }));
+    console.log(
+      "line 48 hone-routes.js mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+      userPosts
+    );
     req.session.save(() => {
       req.session.loggedIn = true;
-    //   res.status(200).json(userPosts);
-      res.render('dashboard', {
+      //   res.status(200).json(userPosts);
+      res.render("dashboard", {
         userPosts,
         loggedIn: req.session.loggedIn,
         username: req.session.username,
         userId: req.session.userId,
-      })
+      });
     });
   } catch (err) {
     console.console.error(err.message);
   }
 });
 
+//============================== add new post to dashboard ===========================//
+router.post("/newpost", async (req, res) => {
+  try {
+    console.log("lne 75 body.title ppppppppppppppppppppppp",req.body.title)
+    console.log("lne 76 body.blog mmmmmmmmmmmmmmmmmmmmmm",req.body.blog)
+    const newPost = await Post.create({
+      title: req.body.title,
+      blog: req.body.blog,
+      user_id: req.session.userId,
+    });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(newPost);
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 //======================== View Single post and Comments ========================//
 router.get("/post/:id", async (req, res) => {
   try {
-    console.log("session id pppppppppppppppppppppppppppppppppppppppp",req.session.userId)
+    console.log(
+      "session id pppppppppppppppppppppppppppppppppppppppp",
+      req.session.userId
+    );
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -110,6 +138,7 @@ router.post("/comment", async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       res.status(200).json(newComment);
+      //add reloadpage to show new comment is added
     });
   } catch (err) {
     console.error(err.message);
