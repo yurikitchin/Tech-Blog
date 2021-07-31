@@ -30,7 +30,7 @@ const addComment = async (event ) => {
       headers: {'Content-Type': 'application/json'},
     });
     if (response.ok) {
-      document.location.replace(`/dashboard`);
+      document.location.replace(`/post/${post_id}`);
       console.log('response ok')
     } else {
       alert("failed to add comment");
