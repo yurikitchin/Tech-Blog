@@ -168,3 +168,19 @@
     background-color: #03045E;
     color: #d7d7e8;
   }
+
+  /* ========================= Dashboard =========================== */
+  .btnContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .postBtn {
+    background-color: var(--color-1);
+    color: var(--text-light);
+    font-size: 1.5rem;
+    padding: 5px;
+  }
