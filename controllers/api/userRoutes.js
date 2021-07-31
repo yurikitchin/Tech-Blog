@@ -12,7 +12,7 @@ router.post("/users", async (req, res) => {
     });
     req.session.save(() => {
       req.session.loggedIn = true;
-      req.session.user_id = userData.id;
+      req.session.userId = userData.id;
       req.session.userName = userData.useName
 
       res.status(200).json(userData);
@@ -72,6 +72,3 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
-
-//add new comment
-//add a comment
