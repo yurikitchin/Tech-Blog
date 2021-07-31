@@ -1,22 +1,13 @@
 
-
+ 
 <section class="postCard">
-    {{#each userPosts as | post |}}
-    <div class=".postwrapper">
-      <div>
-        <h1 class="postTitle" id={{post.id}}>{{post.title}}</h1>
-        <p>created by {{post.user.userName}} on {{format_date post.datePosted}}</p>
-    </div>
-    <article>
-        {{post.blog}}
-    </article>
-      <nav class="postButtons">
-          <button class="updateBtn" id={{post.id}}> Update Post </button>
-          <button class="deleteBtn" id={{post.id}}> Delete Post </button>
-      </nav>
-    </div>
+  {{#each userPosts as | post |}}
+  {{>dash-data}}
+  {{/each}}
 </section>
-{{/each}}
+
+
+
 
    <section class="newPostModal">
       <div class="modalContent">

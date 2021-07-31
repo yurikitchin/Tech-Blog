@@ -35,10 +35,6 @@ router.get("/", async (req, res) => {
 //view all posts by logged in user, add post, delete post
 router.get("/dashboard", async (req, res) => {
   try {
-    console.log(
-      "line 38 sessio user id llllllllllllllllllllllllllllllllll",
-      req.session.userId
-    );
     const dbPosts = await Post.findAll({
       where: { user_id: req.session.userId },
       include: [
@@ -48,12 +44,7 @@ router.get("/dashboard", async (req, res) => {
         },
       ],
     });
-    console.log("line 48 kkkkkkkkkkkkkkkkkkkkkkkk", dbPosts);
     const userPosts = dbPosts.map((posts) => posts.get({ plain: true }));
-    console.log(
-      "line 48 hone-routes.js mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
-      userPosts
-    );
     req.session.save(() => {
       req.session.loggedIn = true;
       //   res.status(200).json(userPosts);
@@ -72,8 +63,6 @@ router.get("/dashboard", async (req, res) => {
 //============================== add new post to dashboard ===========================//
 router.post("/newpost", async (req, res) => {
   try {
-    console.log("lne 75 body.title ppppppppppppppppppppppp",req.body.title)
-    console.log("lne 76 body.blog mmmmmmmmmmmmmmmmmmmmmm",req.body.blog)
     const newPost = await Post.create({
       title: req.body.title,
       blog: req.body.blog,
@@ -88,6 +77,42 @@ router.post("/newpost", async (req, res) => {
   }
 });
 
+//================================ update post on dashboard ========================//
+router.put("/updatepost", async (req, res) => {
+  try {
+    const postID = req.body.id
+    const update = await Post.update(
+      {
+        title: req.body.title,
+        blog: req.body.blog
+      }, 
+      {
+      where: {
+        id: postID
+      }     
+    })
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(update);
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
+//==========================delete post on dashboard ============================//
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletePost = await Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.status(200).json(deletePost)
+  } catch(err) {
+    res.status(500).json(err)
+  }
+})
 //======================== View Single post and Comments ========================//
 router.get("/post/:id", async (req, res) => {
   try {
@@ -138,7 +163,6 @@ router.post("/comment", async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       res.status(200).json(newComment);
-      //add reloadpage to show new comment is added
     });
   } catch (err) {
     console.error(err.message);

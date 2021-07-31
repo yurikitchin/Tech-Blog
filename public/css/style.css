@@ -47,7 +47,7 @@
 
  /* ================= Sign in/up Modals =================== */
   
- .signModal, .loginModal, .commentModal, .newPostModal {
+ .signModal, .loginModal, .commentModal, .newPostModal, .updateModal {
    display: none;
    position: absolute;
    left: 50%;
@@ -109,7 +109,7 @@
     margin: 1rem;
   }
   
-  .form input {
+  .form input, textarea {
     width: 100%;
     padding: 1rem;
     margin: 1rem;
