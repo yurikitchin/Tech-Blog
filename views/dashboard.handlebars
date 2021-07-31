@@ -11,7 +11,7 @@
         {{post.blog}}
     </article>
     {{#if loggedIn}}
-    <button class="commentBtn" id={{id}}> Go on! Add a comment....</button>
+    <button class="postBtn" id={{id}}> Go on! Add a post....</button>
     {{/if}}
     </div>
 </section>
@@ -19,18 +19,18 @@
 
    <section class="newPostModal">
       <div class="modalContent">
-        <h1 class="modalTitle">Add a Comment</h1>
+        <h1 class="modalTitle">Add A New Post</h1>
         <button id="closePost" class="closeBtn">&times;</button>
       </div>
 
       <form class="form">
 
-        <label for="commentContent"></label>
-        <input type="textarea" id="commentContent" placeholder="Add your comment" />
+        <label for="postContent"></label>
+        <input type="textarea" id="postContent" placeholder="Add your post" />
 
 
 
-        <input class="submitBtn" id="comment-submit" type="submit" value="Submit" />
+        <input class="submitBtn" id="post-submit" type="submit" value="Submit" />
       </form>
 
     </section>
@@ -38,4 +38,4 @@
     <div class="btnContainer">
         <button class="postBtn" type="submit">Add New post</button>  
     </div>
-<script src="../js/homepage.js"></script>
+<script src="../js/dashboard.js"></script>
