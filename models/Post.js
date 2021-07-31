@@ -21,6 +21,8 @@ Post.init(
           },
           datePosted: {
               type: DataTypes.DATE,
+              allowNull: false,
+              defaultValue: DataTypes.NOW,
     
           },
           user_id: {
