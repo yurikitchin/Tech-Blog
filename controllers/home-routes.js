@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
 
 //============================== Dashboard ==================================//
 //view all posts by logged in user, add post, delete post
-router.get("/dashboard", withAuth, async (req, res) => {
+router.get("/dashboard", async (req, res) => {
   try {
     const dbPosts = await Post.findAll({
       where: { user_id: req.session.userId },
@@ -62,7 +62,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 //============================== add new post to dashboard ===========================//
-router.post("/newpost", withAuth, async (req, res) => {
+router.post("/newpost", async (req, res) => {
   try {
     const newPost = await Post.create({
       title: req.body.title,
@@ -79,7 +79,7 @@ router.post("/newpost", withAuth, async (req, res) => {
 });
 
 //================================ update post on dashboard ========================//
-router.put("/updatepost", withAuth, async (req, res) => {
+router.put("/updatepost", async (req, res) => {
   try {
     const postID = req.body.id
     const update = await Post.update(
@@ -102,7 +102,7 @@ router.put("/updatepost", withAuth, async (req, res) => {
 })
 
 //==========================delete post on dashboard ============================//
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deletePost = await Post.destroy({
       where: {
@@ -148,7 +148,7 @@ router.get("/post/:id", async (req, res) => {
 });
 
 //============================= Add Comment to Post ===========================//
-router.post("/comment", withAuth, async (req, res) => {
+router.post("/comment", async (req, res) => {
   try {
     const newComment = await Comment.create({
       Comment: req.body.Comment,
