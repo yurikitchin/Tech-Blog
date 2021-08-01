@@ -1,186 +1,248 @@
 :root {
-    --color-1: #03045E;
-    --color-2: #0077B6;
-    --color-3: #00B4D8;
-    --color-4: #90E0Ef;
-    --color-5: #CAF0F8;
-    --text-light: #fff;
-    --text-dark: rgb(20, 20, 20);
-  }
+  --color-1: #272ab8;
+  --color-2: #0077b6;
+  --color-3: #00b4d8;
+  --color-4: #90e0ef;
+  --color-5: #caf0f8;
+  --text-light: #fff;
+  --text-dark: rgb(20, 20, 20);
+}
 
 .header {
-    background-color: #d7d7e8;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 20vh;
-    padding: 1.5rem;  
-    MARGIN-TOP: 29PX;
+  background-color: var(--color-3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20vh;
+  padding: 1.5rem;
+  margin-top: 29px;
 }
 
 .navBar {
-    display: grid;
-    grid-template-columns: 25vw 25vw 25vw 25vw;
+  display: grid;
+  grid-template-columns: 25vw 25vw 25vw 25vw;
 }
 
-
-  .titleImage {
-    padding-left: 10px;
-    grid-column: 1 / span 2;
-  }
-
-  .logo {
-      height: 150px;
-  }
-
-  .menu {
-    margin-bottom: auto;
-    margin-top: auto;
-    justify-content: space-evenly;
-    display: flex;
-    grid-column: 3 / span 2;
+.titleImage {
+  padding-left: 10px;
+  grid-column: 1 / span 2;
 }
 
- /* ================= Sign in/up Modals =================== */
-  
- .signModal, .loginModal, .commentModal, .newPostModal {
-   display: none;
-   position: absolute;
-   left: 50%;
-   margin-left: -185px;
-   top: 14%;
-    opacity: 0;
-    max-width: 90vw;
-    max-height: 90vh;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-    border-radius: 10px;
-    background-color: var(--color-2);
-    z-index:10;
-  }
+.logo {
+  height: 150px;
+}
 
-  .display {
-    display: block;
-    opacity: 0.9;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 10;
-  }
+.menu {
+  margin-bottom: auto;
+  margin-top: auto;
+  justify-content: space-evenly;
+  display: flex;
+  grid-column: 3 / span 2;
+}
 
-  .hide {
-    display: none !important;
-  }
-  
-  .closeBtn {
-    font-size: larger;
-    position: absolute;
-    background-color: var(--color-2);
-    color: #fff;
-    top: 1.5rem;
-    right: 4.5rem;;
-    padding: 0.05rem 0.4rem;
-    border-radius: 15%;
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s ease;
+article {
+  font-size: large;
+}
 
-  }
-  
-  .closeBtn:hover, .closeDeleteBtn:hover {
-    background-color: #ff0000;
-  }
-  
-  .modalContent {
-    text-align: center;
-    color: var(--text-light);
-    letter-spacing: 0.5px;
-    font-size: larger;
-  }
-  
-  .form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem;
-    margin: 1rem;
-  }
-  
-  .form input {
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 10px;
-    border: none;
-  }
-  
-  .signUp {
-    color: var(--text-light);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .submitBtn {
-    background-color: var(--color-4);
-    color: var(--text-dark);
-    width: 60% !important;
-    padding: 0.7rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.5s ease;
+a {
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
 
-  }
-  .submitBtn:hover {
-    background-color: var(--color-1);
-    color: var(--text-light);
-  }
-  
-  #signBtn {
-    background-color: var(--color-5);
-    width: 30%;
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 10px;
-    letter-spacing: .5px;
-    border: none;
-    transition: all 0.5s ease;
+a:hover {
+  color: #caf0f8;
+  cursor: pointer;
+}
 
-  }
-  #signBtn:hover {
-    background-color: var(--color-1);
-    color: var(--text-light);
-  }
-  
+/* ================= Sign in/up Modals =================== */
 
-  /* ==================== Post Cards ====================== */
-  .postCard {
-    position: relative;
-    margin-top: 230px;
-  }
+.signModal,
+.loginModal,
+.commentModal,
+.newPostModal,
+.updateModal {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -185px;
+  top: 14%;
+  opacity: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  border-radius: 10px;
+  background-color: var(--color-2);
+  z-index: 10;
+}
 
-  .commentBtn {
-    width: 100%;
-    background-color: #03045E;
-    color: #d7d7e8;
-  }
+.display {
+  display: block;
+  opacity: 0.9;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 10;
+}
 
-  /* ========================= Dashboard =========================== */
-  .btnContainer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+.hide {
+  display: none !important;
+}
 
-  .postBtn {
-    background-color: var(--color-1);
-    color: var(--text-light);
-    font-size: 1.5rem;
-    padding: 5px;
-  }
+.closeBtn {
+  font-size: larger;
+  position: absolute;
+  background-color: var(--color-2);
+  color: #fff;
+  top: 1.5rem;
+  right: 4.5rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 15%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.closeBtn:hover,
+.closeDeleteBtn:hover {
+  background-color: #ff0000;
+}
+
+.modalContent {
+  text-align: center;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+  font-size: larger;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.form input,
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  border: none;
+}
+
+.signUp {
+  color: var(--text-light);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.submitBtn {
+  background-color: var(--color-4);
+  color: var(--text-dark);
+  width: 60% !important;
+  padding: 0.7rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.submitBtn:hover {
+  background-color: var(--color-1);
+  color: var(--text-light);
+}
+
+#signBtn {
+  background-color: var(--color-5);
+  width: 30%;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  border: none;
+  transition: all 0.5s ease;
+}
+#signBtn:hover {
+  background-color: var(--color-1);
+  color: var(--text-light);
+}
+
+/* ==================== Post Cards ====================== */
+.postCard {
+  position: relative;
+  margin-top: 230px;
+}
+
+.commentBtn {
+  width: 100%;
+  background-color: #03045e;
+  color: #d7d7e8;
+}
+
+.postHead {
+  display: flex;
+  background-color: var(--color-3);
+  justify-content: space-between;
+  padding: 5px;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 1px solid black;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.postTitle:hover {
+  color: #caf0f8;
+  cursor: pointer;
+}
+
+.postArticle {
+  padding: 5px;
+  background-color: var(--color-4);
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.postWrapper {
+  padding: 20px;
+
+}
+
+.postButtons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.dashBtn {
+
+}
+
+/* ========================= Dashboard =========================== */
+.btnContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Btn {
+  background-color: var(--color-1);
+  color: var(--text-light);
+  font-size: 1.5rem;
+  padding: 5px;
+  border-radius: 10px;
+}

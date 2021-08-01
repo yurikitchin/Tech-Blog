@@ -1,7 +1,7 @@
 const { User } = require("../models");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
-const { format_date } = require("../utils/helpers");
+const withAuth = require("../utils/auth");
 
 const router = require("express").Router();
 
@@ -17,10 +17,6 @@ router.get("/", async (req, res) => {
       ],
     });
     const renderPosts = postData.map((posts) => posts.get({ plain: true }));
-    console.log(
-      "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
-      renderPosts[0].datePosted
-    );
     res.render("homepage", {
       renderPosts,
       loggedIn: req.session.loggedIn,
@@ -33,12 +29,8 @@ router.get("/", async (req, res) => {
 
 //============================== Dashboard ==================================//
 //view all posts by logged in user, add post, delete post
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    console.log(
-      "line 38 sessio user id llllllllllllllllllllllllllllllllll",
-      req.session.userId
-    );
     const dbPosts = await Post.findAll({
       where: { user_id: req.session.userId },
       include: [
@@ -48,12 +40,7 @@ router.get("/dashboard", async (req, res) => {
         },
       ],
     });
-    console.log("line 48 kkkkkkkkkkkkkkkkkkkkkkkk", dbPosts);
     const userPosts = dbPosts.map((posts) => posts.get({ plain: true }));
-    console.log(
-      "line 48 hone-routes.js mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
-      userPosts
-    );
     req.session.save(() => {
       req.session.loggedIn = true;
       //   res.status(200).json(userPosts);
@@ -70,10 +57,8 @@ router.get("/dashboard", async (req, res) => {
 });
 
 //============================== add new post to dashboard ===========================//
-router.post("/newpost", async (req, res) => {
+router.post("/newpost", withAuth, async (req, res) => {
   try {
-    console.log("lne 75 body.title ppppppppppppppppppppppp",req.body.title)
-    console.log("lne 76 body.blog mmmmmmmmmmmmmmmmmmmmmm",req.body.blog)
     const newPost = await Post.create({
       title: req.body.title,
       blog: req.body.blog,
@@ -88,13 +73,52 @@ router.post("/newpost", async (req, res) => {
   }
 });
 
+//================================ update post on dashboard ========================//
+router.put("/updatepost", withAuth, async (req, res) => {
+  try {
+    const postID = req.body.id
+    const update = await Post.update(
+      {
+        title: req.body.title,
+        blog: req.body.blog
+      }, 
+      {
+      where: {
+        id: postID
+      }     
+    })
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(update);
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
+//==========================delete post on dashboard ============================//
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const deletePost = await Post.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.userId
+
+      }
+    })
+    if (!deletePost) {
+      res.status(404).json({ message: 'no post found matching this id'});
+      return;
+    }
+
+    res.status(200).json(deletePost)
+  } catch(err) {
+    res.status(500).json(err)
+  }
+})
 //======================== View Single post and Comments ========================//
 router.get("/post/:id", async (req, res) => {
   try {
-    console.log(
-      "session id pppppppppppppppppppppppppppppppppppppppp",
-      req.session.userId
-    );
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -113,7 +137,6 @@ router.get("/post/:id", async (req, res) => {
       ],
     });
     const viewPost = postData.get({ plain: true });
-    console.log(viewPost.comments[0].author);
     // res.status(200).json(viewPost)
     res.render("post", {
       viewPost,
@@ -127,7 +150,7 @@ router.get("/post/:id", async (req, res) => {
 });
 
 //============================= Add Comment to Post ===========================//
-router.post("/comment", async (req, res) => {
+router.post("/comment", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       Comment: req.body.Comment,
@@ -138,7 +161,6 @@ router.post("/comment", async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       res.status(200).json(newComment);
-      //add reloadpage to show new comment is added
     });
   } catch (err) {
     console.error(err.message);

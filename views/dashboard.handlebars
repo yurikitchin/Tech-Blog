@@ -1,21 +1,13 @@
 
-
+ 
 <section class="postCard">
-    {{#each userPosts as | post |}}
-    <div class=".postwrapper">
-      <div>
-        <h1 class="postTitle" id={{post.id}}>{{post.title}}</h1>
-        <p>created by {{post.user.userName}} on {{format_date post.datePosted}}</p>
-    </div>
-    <article>
-        {{post.blog}}
-    </article>
-    {{#if loggedIn}}
-    <button class="postBtn" id={{id}}> Go on! Add a post....</button>
-    {{/if}}
-    </div>
+  {{#each userPosts as | post |}}
+  {{>dash-data}}
+  {{/each}}
 </section>
-{{/each}}
+
+
+
 
    <section class="newPostModal">
       <div class="modalContent">
@@ -36,6 +28,6 @@
     </section>
 
     <div class="btnContainer">
-        <button class="postBtn" type="submit">Add New post</button>  
+        <button class="Btn postBtn" type="submit">Add New post</button>  
     </div>
 <script src="../js/dashboard.js"></script>

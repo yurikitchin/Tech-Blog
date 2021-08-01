@@ -1,0 +1,35 @@
+  {{!-- post's display --}}
+  <div class="postWrapper" id="post{{id}}">
+      <div class="postHead">
+        <h1 class="postTitle" >{{title}}</h1>
+        <h4 class="userDate">created by {{user.userName}} on {{format_date datePosted}}</h4>
+      </div>
+    <article class="postArticle">
+        {{blog}}
+        
+        <nav class="postButtons">
+          <button class="updateBtn Btn" id={{id}}> Update Post </button>
+          <button class="deleteBtn Btn" id={{id}}> Delete Post </button>
+      </nav>
+    </article>
+  </div>
+
+
+{{!-- the update modal content --}}
+      <section class="updateModal" id="modal{{id}}">
+      <div class="modalContent">
+        <h1 class="modalTitle">Update your Post</h1>
+        <button id="" class="closeBtn closeUpdate">&times;</button>
+      </div>
+
+      <form class="form">
+        <label for="updateTitle"></label>
+        <input type="text" class="updateTitle{{id}}" value="{{title}}"/>
+
+        <label for="updateContent"></label>
+        <textarea class="updateContent{{id}}">{{blog}}</textarea>
+
+        <input class="submitBtn update-submit" id="{{id}}" value="submit" />
+      </form>
+
+    </section>

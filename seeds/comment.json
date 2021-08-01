@@ -1,20 +1,17 @@
 [
     {
-        "author": "user",
         "Comment": "Nullam et posuere risus, eu pellentesque neque. Quisque ac fermentum enim, eget sodales nunc. Nunc diam ipsum, tincidunt vel dapibus et, hendrerit in turpis. Donec efficitur et nulla pellentesque fringilla. Vivamus tincidunt non mi nec tristique. Nullam maximus magna quis nulla imperdiet accumsan. Vivamus varius dolor eros, a pharetra quam aliquet quis. Cras pretium accumsan odio ac gravida. Nullam",
         "datePosted":"Thursday, 22 July 2021",
         "post_id": 1,
         "user_id": 2
     },
     {
-        "author": "user",
         "Comment": "Nullam et posuere risus, eu pellentesque neque. Quisque ac fermentum enim, eget sodales nunc. Nunc diam ipsum, tincidunt vel dapibus et, hendrerit in turpis. Donec efficitur et nulla pellentesque fringilla. Vivamus tincidunt non mi nec tristique. Nullam maximus magna quis nulla imperdiet accumsan. Vivamus varius dolor eros, a pharetra quam aliquet quis. Cras pretium accumsan odio ac gravida. Nullam",
         "datePosted":"Thursday, 22 July 2021",
         "post_id": 2,
         "user_id": 3
     },
     {
-        "author": "user",
         "Comment": "Nullam et posuere risus, eu pellentesque neque. Quisque ac fermentum enim, eget sodales nunc. Nunc diam ipsum, tincidunt vel dapibus et, hendrerit in turpis. Donec efficitur et nulla pellentesque fringilla. Vivamus tincidunt non mi nec tristique. Nullam maximus magna quis nulla imperdiet accumsan. Vivamus varius dolor eros, a pharetra quam aliquet quis. Cras pretium accumsan odio ac gravida. Nullam",
         "datePosted":"Thursday, 22 July 2021",
         "post_id": 3,

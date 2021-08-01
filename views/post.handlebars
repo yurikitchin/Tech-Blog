@@ -1,27 +1,26 @@
 {{!-- Posts --}}
-<section class="postCard">
-      <div>
+<section class="postCard postWrapper">
+      <div class="postHead">
         <h1 class="postTitle" id={{viewPost.id}}>{{viewPost.title}}</h1>
-        <p>created by {{viewPost.user.userName}} on {{format_date viewPost.datePosted}}</p>
+        <h4 class="userDate">created by {{viewPost.user.userName}} on {{format_date viewPost.datePosted}}</h4>
     </div>
-    <article>
+    <article class="postArticle">
         {{viewPost.blog}}
     </article>
     {{#if loggedIn}}
-    <button class="commentBtn" id={{id}}> Go on! Add a comment....</button>
+    <button class="commentBtn Btn" id={{id}}> Go on! Add a comment....</button>
     {{/if}}
 </section>
 
-<section class="comments">
+<section class="comments ">
     {{#each comments as |comments|}}
-      <div>
+    <div class="postWrapper">
+      <div class="postHead">
         <h2>{{comments.user.userName}} {{format_date comments.datePosted}}</h2>
-        <p>{{comments.Comment}}</p>
-    {{/each}}
+      </div>
+        <article class="postArticle">{{comments.Comment}}</article>>
     </div>
-    {{!-- {{else}}
-    <p>Be the first to comment on this Post</p>
-    {{/if}} --}}
+    {{/each}}
 </section>
 
    <section class="commentModal">
