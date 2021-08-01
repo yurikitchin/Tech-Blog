@@ -114,8 +114,26 @@ const deleteBtns = document.querySelectorAll('.deleteBtn')
 console.log("this is deletedBtns", deleteBtns)
 
 async function deletePost(buttonID) {
-  let selectedPost = document.querySelector(`post${buttonID}`)
+  console.log(buttonID)
+  try {
+    const response = await fetch(`/${buttonID}`, {
+      method: 'DELETE',
+    });
+    console.log("the post has been deleted, id:", buttonID);
+    if (response.ok) {
+      document.location.replace(`/dashboard`);
+    } else {
+        alert("failed to delete Post");
+      }
+    
+  } catch (error) {
+    console.error(error.message)
+  }
 }
-
-
 //delete buttons need a for each to add eventlistener to each one
+
+deleteBtns.forEach((button) => {
+  let buttonID = button.getAttribute('id')
+  button.addEventListener("click", function(){
+    deletePost(buttonID)});
+})

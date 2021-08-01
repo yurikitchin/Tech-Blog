@@ -18,10 +18,6 @@ router.get("/", async (req, res) => {
       ],
     });
     const renderPosts = postData.map((posts) => posts.get({ plain: true }));
-    console.log(
-      "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
-      renderPosts[0].datePosted
-    );
     res.render("homepage", {
       renderPosts,
       loggedIn: req.session.loggedIn,
@@ -34,7 +30,7 @@ router.get("/", async (req, res) => {
 
 //============================== Dashboard ==================================//
 //view all posts by logged in user, add post, delete post
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const dbPosts = await Post.findAll({
       where: { user_id: req.session.userId },
@@ -62,7 +58,7 @@ router.get("/dashboard", async (req, res) => {
 });
 
 //============================== add new post to dashboard ===========================//
-router.post("/newpost", async (req, res) => {
+router.post("/newpost", withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       title: req.body.title,
@@ -79,7 +75,7 @@ router.post("/newpost", async (req, res) => {
 });
 
 //================================ update post on dashboard ========================//
-router.put("/updatepost", async (req, res) => {
+router.put("/updatepost", withAuth, async (req, res) => {
   try {
     const postID = req.body.id
     const update = await Post.update(
@@ -102,13 +98,20 @@ router.put("/updatepost", async (req, res) => {
 })
 
 //==========================delete post on dashboard ============================//
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const deletePost = await Post.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
+        user_id: req.session.userId
+
       }
     })
+    if (!deletePost) {
+      res.status(404).json({ message: 'no post found matching this id'});
+      return;
+    }
+
     res.status(200).json(deletePost)
   } catch(err) {
     res.status(500).json(err)
@@ -148,7 +151,7 @@ router.get("/post/:id", async (req, res) => {
 });
 
 //============================= Add Comment to Post ===========================//
-router.post("/comment", async (req, res) => {
+router.post("/comment", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       Comment: req.body.Comment,
