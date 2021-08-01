@@ -1,7 +1,11 @@
-    <div>
+<div class="postWrapper">
+    
+    <div class="postHead">
         <h1 class="postTitle" id={{id}}>{{title}}</h1>
-        <p>created by {{user.userName}} on {{format_date datePosted}}</p>
+        <h4 class="userDate">created by {{user.userName}} on {{format_date datePosted}}</h4>
     </div>
-    <article>
+    <article class="postArticle">
         {{blog}}
     </article>
+
+</div>

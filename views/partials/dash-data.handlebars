@@ -1,17 +1,18 @@
   {{!-- post's display --}}
-  <div class=".postwrapper" id="post{{id}}">
-      <div>
+  <div class="postWrapper" id="post{{id}}">
+      <div class="postHead">
         <h1 class="postTitle" >{{title}}</h1>
-        <p>created by {{user.userName}} on {{format_date datePosted}}</p>
-    </div>
-    <article>
+        <h4 class="userDate">created by {{user.userName}} on {{format_date datePosted}}</h4>
+      </div>
+    <article class="postArticle">
         {{blog}}
-    </article>
-      <nav class="postButtons">
-          <button class="updateBtn" id={{id}}> Update Post </button>
-          <button class="deleteBtn" id={{id}}> Delete Post </button>
+        
+        <nav class="postButtons">
+          <button class="updateBtn Btn" id={{id}}> Update Post </button>
+          <button class="deleteBtn Btn" id={{id}}> Delete Post </button>
       </nav>
-    </div>
+    </article>
+  </div>
 
 
 {{!-- the update modal content --}}
