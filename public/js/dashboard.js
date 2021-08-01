@@ -48,7 +48,7 @@ submitPost.addEventListener("click", addPost);
 const updateBtn = document.querySelectorAll(".updateBtn");
 const updateModal = document.querySelectorAll(".updateModal");
 const closeUpdate = document.querySelectorAll(".closeUpdate");
-console.log("this is closeUpdate", closeUpdate)
+
 function showUpdate(buttonID) {
   let modal = document.querySelector(`#modal${buttonID}`)
   modal.classList.add('display')
@@ -57,7 +57,6 @@ function showUpdate(buttonID) {
 
 function hideUpdate() {
   let modal = document.querySelector('.display')
-  console.log(modal)
   modal.classList.remove("display");
 }
 
@@ -74,15 +73,14 @@ closeUpdate.forEach(button => {
 
 
 // ========================= update post ===========================
-submitUpdate = document.querySelectorAll(".update-submit");
+const submitUpdate = document.querySelectorAll(".update-submit");
 
-const updatePost = async (event) => {
-  event.preventDefault();
-  let title = document.querySelector(".updateTitle").value.trim();
-  let blog = document.querySelector(".updateContent").value.trim();
-  let id = document.querySelector(".updateTitle").getAttribute('id')
-  console.log(title, blog, id)
-  if (title && blog && id) {
+async function updatePost(buttonID) {
+  console.log("buttonid", buttonID)
+  let title = document.querySelector(`.updateTitle${buttonID}`).value.trim();
+  let blog = document.querySelector(`.updateContent${buttonID}`).value.trim();
+  let id = buttonID
+    if (title && blog && id) {
     
     try {
       const response = await fetch("/updatepost", {
@@ -102,6 +100,22 @@ const updatePost = async (event) => {
   }
 };
 
+
 submitUpdate.forEach((button) => {
-  button.addEventListener("click", updatePost);
+  let buttonID = button.getAttribute('id')
+  button.addEventListener("click", function(){
+    updatePost(buttonID)});
 });
+
+
+// ======================== delete post ================================
+const deleteBtns = document.querySelectorAll('.deleteBtn')
+
+console.log("this is deletedBtns", deleteBtns)
+
+async function deletePost(buttonID) {
+  let selectedPost = document.querySelector(`post${buttonID}`)
+}
+
+
+//delete buttons need a for each to add eventlistener to each one

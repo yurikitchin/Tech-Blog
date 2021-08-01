@@ -1,6 +1,7 @@
-  <div class=".postwrapper">
+  {{!-- post's display --}}
+  <div class=".postwrapper" id="post{{id}}">
       <div>
-        <h1 class="postTitle" id={{id}}>{{title}}</h1>
+        <h1 class="postTitle" >{{title}}</h1>
         <p>created by {{user.userName}} on {{format_date datePosted}}</p>
     </div>
     <article>
@@ -12,6 +13,8 @@
       </nav>
     </div>
 
+
+{{!-- the update modal content --}}
       <section class="updateModal" id="modal{{id}}">
       <div class="modalContent">
         <h1 class="modalTitle">Update your Post</h1>
@@ -20,12 +23,12 @@
 
       <form class="form">
         <label for="updateTitle"></label>
-        <input type="text" class="updateTitle" id="{{id}}" value="{{title}}"/>
+        <input type="text" class="updateTitle{{id}}" value="{{title}}"/>
 
         <label for="updateContent"></label>
-        <textarea class="updateContent">{{blog}}</textarea>
+        <textarea class="updateContent{{id}}">{{blog}}</textarea>
 
-        <input class="submitBtn update-submit" type="submit"/>
+        <input class="submitBtn update-submit" id="{{id}}" value="submit" />
       </form>
 
     </section>
